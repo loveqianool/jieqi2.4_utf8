@@ -1499,7 +1499,8 @@ function jieqi_htmlclickable($str, $styles = NULL)
 	$k++;
 	$patterns[$k] = '/(?<=[^\\[\\]="\'\\/\\.<>]|^)([a-z0-9\\-_\\.]{3,})@([a-z0-9\\/\\-_+=.~!%@?#%&;:$\\│]+)/i';
 	$replacements[$k] = '<a href="mailto:$1@$2">$1@$2</a>';
-	return preg_replace($patterns, $replacements, $str);
+	return ppreg_replace_callback($patterns, $replacements, $str);
+	return preg_replace_callback($patterns, $replacements, $str);
 }
 
 function jieqi_substr($str, $start, $length, $trimmarker = '...')
